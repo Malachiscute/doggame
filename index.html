@@ -1,1 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Dog Game</title>
+	<link rel='stylesheet' href='https://malachiscute.github.io/style(2).css' type='text/css' />
+	
+	<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #58f1ea;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: ##12ff00;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a class="active" href="https://malachiscute.github.io/HOME/">Home</a>
+  <a href="https://malachiscute.github.io/Golden-Ret/">Golden Retriever</a>
+  <a href="https://malachiscute.github.io/Henry/">Henry</a>
+  <a href="https://malachiscute.github.io/Husky/">Husky</a>
+  <a href="https://malachiscute.github.io/sausagedog/">Sausage Dog</a>
+  <a href="https://malachiscute.github.io/SCARYDOG/">Scary Dog</a>
+</div>
+
+<div style="padding-left:16px">
+</div>
+
+</body>
+<h1></h1>
+<body>
+</body>
+<p>
+</p>	
+
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dog Clicker Game</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    #game-container {
+        position: relative;
+        width: 400px;
+        height: 300px;
+        margin: 0 auto;
+        border: 2px solid #000;
+        overflow: hidden;
+    }
+    #dog {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+    }
+    #score {
+        margin-top: 20px;
+        font-size: 24px;
+    }
+</style>
+</head>
+<body>
+    <h1>Dog Clicker Game</h1>
+    <p>Click on the dog as many times as you can within 30 seconds!</p>
+    <div id="game-container">
+        <img id="dog" src="https://emojicdn.elk.sh/🐶" alt="Dog">
+    </div>
+    <p id="score">Score: <span id="score-value">0</span></p>
+
+    <script>
+        const dog = document.getElementById('dog');
+        const scoreValue = document.getElementById('score-value');
+        let score = 0;
+
+        // Function to generate random position for the dog
+        function randomPosition() {
+            const gameContainer = document.getElementById('game-container');
+            const containerWidth = gameContainer.clientWidth;
+            const containerHeight = gameContainer.clientHeight;
+            const dogWidth = dog.clientWidth;
+            const dogHeight = dog.clientHeight;
+            const maxX = containerWidth - dogWidth;
+            const maxY = containerHeight - dogHeight;
+
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            dog.style.left = randomX + 'px';
+            dog.style.top = randomY + 'px';
+        }
+
+        // Function to update score and reposition the dog
+        function updateScore() {
+            score++;
+            scoreValue.textContent = score;
+            randomPosition();
+        }
+
+        // Event listener for clicking the dog
+        dog.addEventListener('click', updateScore);
+
+        // Timer for the game
+        const totalTime = 30; // in seconds
+        let timeLeft = totalTime;
+
+        function countdown() {
+            timeLeft--;
+            if (timeLeft >= 0) {
+                setTimeout(countdown, 1000);
+            } else {
+                // Game over
+                dog.removeEventListener('click', updateScore);
+                alert('Game over! Your final score is ' + score);
+            }
+        }
+
+        countdown();
+    </script>
+</body>
+</html>
